@@ -3,12 +3,100 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Campus Vault - Academic Hub</title>
+    <title>Campus Vault - Academic Portal</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+
     <div id="app-container">
-        <h1>Campus Vault Is Live on E:\ Drive!</h1>
-        <p>Your local full-stack development workspace is configured correctly.</p>
+        
+        <aside id="sidebar">
+            
+            <div class="brand-header">
+                <h2>CAMPUS VAULT</h2>
+                <span class="portal-badge">STUDENT PORTAL / MBU Portal</span>
+            </div>
+
+            <div class="context-selector">
+                <label for="branch-select">Active Branch Context</label>
+                <select id="branch-select">
+                    <option value="cse" selected>CSE Department</option>
+                    <option value="ece">ECE Department</option>
+                    <option value="me">ME Department</option>
+                </select>
+            </div>
+
+            <button class="upload-btn">+ UPLOAD MATERIAL</button>
+
+            <nav class="subject-accordion">
+                <div class="subject-item active">
+                    <div class="subject-header">Java Programming</div>
+                    <ul class="sub-links">
+                        <li><a href="#notes" class="active">📁 Notes</a></li>
+                        <li><a href="#labs">🧪 Lab Manuals</a></li>
+                        <li><a href="#pyp">📄 PYPs</a></li>
+                        <li><a href="#links">🔗 Links</a></li>
+                    </ul>
+                </div>
+            </nav>
+
+            <div class="user-profile-zone">
+                <div class="profile-card">
+                    <div class="avatar">SK</div>
+                    <div class="user-info">
+                        <span class="user-name">Sridhar</span>
+                        <span class="user-role">CSE Student</span>
+                    </div>
+                </div>
+                <div class="submissions-tracker">
+                    <span>Approved: <strong class="text-approved">3</strong></span>
+                    <span>Pending: <strong class="text-pending">1</strong></span>
+                </div>
+                <div class="action-row">
+                    <button class="footer-btn logout">LOGOUT</button>
+                    <button class="footer-btn exit">EXIT</button>
+                </div>
+            </div>
+
+        </aside>
+
+        <main id="content-grid">
+            
+            <header class="content-header">
+                <h1>Viewing: Java Programming > Notes</h1>
+            </header>
+            
+            <section class="grid-display">
+                
+                <div class="resource-card">
+                    <div class="card-body">
+                        <div class="file-icon">📄</div>
+                        <h3 class="file-title">Unit 1: Object Oriented Concepts</h3>
+                    </div>
+                    <div class="card-footer">
+                        <span class="uploader">By: Sridhar</span>
+                        <span class="upload-date">2026-05-24</span>
+                    </div>
+                </div>
+
+                <div class="resource-card">
+                    <div class="card-body">
+                        <div class="file-icon">📄</div>
+                        <h3 class="file-title">Mid-Term Previous Year Paper</h3>
+                    </div>
+                    <div class="card-footer">
+                        <span class="uploader">By: Admin</span>
+                        <span class="upload-date">2026-05-20</span>
+                    </div>
+                </div>
+
+            </section>
+        </main>
+
     </div>
+
 </body>
 </html>

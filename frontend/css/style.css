@@ -1,0 +1,289 @@
+/* ==========================================================
+   1. GLOBAL VARIABLES & SYSTEM MARGIN/PADDING RESET
+   ========================================================== */
+:root {
+    --sidebar-bg: #0f172a;       /* Dark Navy Blue for Sidebar Frame */
+    --primary-navy: #1e293b;     /* Component Containers Navy Hues */
+    --accent-green: #10b981;     /* Vibrant Green Action Button Focus */
+    --accent-red: #ef4444;       /* Explicit Reject/Exit Button Alert Red */
+    --text-light: #f8fafc;       /* Clean White Typography */
+    --text-muted: #94a3b8;       /* Highly Legible Slate Gray Text */
+    --bg-main: #f1f5f9;          /* Main Content Window Soft Matte Light Gray */
+}
+
+/* Strip default operating system spacing configurations */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--bg-main);
+    color: #334155;
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden; /* Lock master browser window viewport scrolling */
+}
+
+/* ==========================================================
+   2. DASHBOARD MAIN PARTITION SPLIT MECHANISM
+   ========================================================== */
+#app-container {
+    display: grid;
+    grid-template-columns: 20% 80%; /* Sidebar 20% width | Content Grid 80% width */
+    width: 100vw;
+    height: 100vh;
+}
+
+/* Left Navigation Control Pillar Frame */
+#sidebar {
+    background-color: var(--sidebar-bg);
+    color: var(--text-light);
+    display: flex;
+    flex-direction: column; /* Stack core children panels vertically */
+    padding: 1.5rem;
+    height: 100vh;
+    border-right: 1px solid #1e293b;
+}
+
+/* Right Content Stage Workspace Window */
+#content-grid {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    overflow: hidden;
+}
+
+/* ==========================================================
+   3. LEFT SIDEBAR COMPONENT DESIGN SPECIFICATIONS
+   ========================================================== */
+
+/* 1. Branding Header Text Configurations */
+.brand-header {
+    margin-bottom: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+.brand-header h2 {
+    font-size: 1.3rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
+.brand-header .portal-badge {
+    font-size: 0.72rem;
+    color: var(--accent-green);
+    font-weight: 600;
+}
+
+/* 2. Context Selector Dropdown Customization */
+.context-selector {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    margin-bottom: 1.5rem;
+}
+.context-selector label {
+    font-size: 0.72rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+}
+.context-selector select {
+    background-color: var(--primary-navy);
+    color: var(--text-light);
+    border: 1px solid #334155;
+    padding: 0.6rem;
+    border-radius: 6px;
+    font-size: 0.88rem;
+    width: 100%;
+    outline: none;
+    cursor: pointer;
+}
+
+/* 3. High-Visibility Action Green Upload Material Element */
+.upload-btn {
+    background-color: var(--accent-green);
+    color: #0f172a;
+    border: none;
+    padding: 0.75rem 1rem;
+    font-weight: 600;
+    font-size: 0.88rem;
+    border-radius: 6px;
+    cursor: pointer;
+    margin-bottom: 1.5rem;
+    width: 100%;
+    transition: background-color 0.2s ease;
+}
+.upload-btn:hover {
+    background-color: #059669;
+}
+
+/* 4. Subject Navigation List & Accordion Area */
+.subject-accordion {
+    flex-grow: 1;
+    overflow-y: auto;
+    margin-bottom: 1.5rem;
+}
+.subject-header {
+    padding: 0.65rem;
+    font-weight: 600;
+    font-size: 0.9rem;
+    background-color: var(--primary-navy);
+    border-radius: 6px;
+    cursor: pointer;
+}
+.sub-links {
+    list-style: none;
+    padding-left: 0.5rem;
+    margin-top: 0.4rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+.sub-links li a {
+    display: block;
+    padding: 0.45rem;
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 0.85rem;
+    border-radius: 4px;
+}
+.sub-links li a:hover, .sub-links li a.active {
+    color: var(--text-light);
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+/* 5. Profile Panel Anchored to Base Container */
+.user-profile-zone {
+    background-color: var(--primary-navy);
+    padding: 1rem;
+    border-radius: 8px;
+    margin-top: auto; /* Force item container to the absolute bottom coordinate */
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+.profile-card {
+    display: flex;
+    align-items: center;
+    gap: 0.65rem;
+}
+.profile-card .avatar {
+    width: 32px;
+    height: 32px;
+    background-color: var(--accent-green);
+    color: #0f172a;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 0.85rem;
+}
+.user-name {
+    font-size: 0.88rem;
+    font-weight: 600;
+    display: block;
+}
+.user-role {
+    font-size: 0.72rem;
+    color: var(--text-muted);
+}
+.submissions-tracker {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    border-top: 1px solid #334155;
+    padding-top: 0.5rem;
+    display: flex;
+    justify-content: space-between;
+}
+.text-approved { color: var(--accent-green); }
+.text-pending { color: #f59e0b; }
+
+.action-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.4rem;
+}
+.footer-btn {
+    background: transparent;
+    border: 1px solid #334155;
+    color: var(--text-light);
+    padding: 0.4rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.72rem;
+    font-weight: 600;
+    transition: all 0.2s ease;
+}
+.footer-btn.logout:hover { background-color: rgba(255, 255, 255, 0.08); }
+.footer-btn.exit:hover { background-color: var(--accent-red); border-color: var(--accent-red); }
+
+/* ==========================================================
+   4. RIGHT SIDE CONTENT GRID & RESOURCE CARDS WINDOW
+   ========================================================== */
+.content-header {
+    background-color: #ffffff;
+    padding: 1.5rem 2rem;
+    border-bottom: 1px solid #e2e8f0;
+}
+.content-header h1 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #1e293b;
+}
+
+/* Grid layout wrapper for academic download cards */
+.grid-display {
+    padding: 2rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); /* Adaptive card response */
+    gap: 1.5rem;
+    overflow-y: auto;
+    height: calc(100vh - 70px);
+}
+
+/* Material Display Cards Styles */
+.resource-card {
+    background-color: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    cursor: pointer;
+}
+.resource-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+.card-body {
+    padding: 1.25rem;
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+}
+.file-icon {
+    font-size: 1.5rem;
+    background-color: #f1f5f9;
+    padding: 0.4rem;
+    border-radius: 6px;
+}
+.file-title {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #334155;
+    line-height: 1.4;
+}
+.card-footer {
+    background-color: #f8fafc;
+    padding: 0.75rem 1.25rem;
+    border-top: 1px solid #e2e8f0;
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.75rem;
+    color: var(--text-muted);
+}
