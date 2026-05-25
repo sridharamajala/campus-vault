@@ -1,17 +1,18 @@
 /* ==========================================================
-   1. GLOBAL VARIABLES & SYSTEM MARGIN/PADDING RESET
+   1. DESIGN SYSTEM VARIABLE TOKENS & MASTER SYSTEM RESET
    ========================================================== */
 :root {
-    --sidebar-bg: #0f172a;       /* Dark Navy Blue for Sidebar Frame */
-    --primary-navy: #1e293b;     /* Component Containers Navy Hues */
-    --accent-green: #10b981;     /* Vibrant Green Action Button Focus */
-    --accent-red: #ef4444;       /* Explicit Reject/Exit Button Alert Red */
-    --text-light: #f8fafc;       /* Clean White Typography */
-    --text-muted: #94a3b8;       /* Highly Legible Slate Gray Text */
-    --bg-main: #f1f5f9;          /* Main Content Window Soft Matte Light Gray */
+    --sidebar-bg: #0f172a;       /* Clean Deep Dark Navy (Left Panel Left As Is) */
+    --primary-navy: #1e293b;     /* Component Navy Boxes */
+    --accent-green: #10b981;     /* High-Visibility Action Green */
+    --accent-red: #ef4444;       /* Urgent Delete/Reject Red */
+    --text-light: #f8fafc;       /* Crisp White Text */
+    --text-muted: #94a3b8;       /* Readable Slate Gray Text */
+    --bg-main: #f1f5f9;          /* Light Matte Soft Background Gray */
+    --card-border: #e2e8f0;      /* Thin Clean Resource Grid Separation Lines */
 }
 
-/* Strip default operating system spacing configurations */
+/* Clear all default browser margins and element paddings */
 * {
     margin: 0;
     padding: 0;
@@ -24,31 +25,34 @@ body {
     color: #334155;
     height: 100vh;
     width: 100vw;
-    overflow: hidden; /* Lock master browser window viewport scrolling */
+    overflow: hidden; /* Lock viewport scrolling entirely */
 }
 
 /* ==========================================================
-   2. DASHBOARD MAIN PARTITION SPLIT MECHANISM
+   2. MASTER LAYOUT ARCHITECTURE (20% SIDEBAR | 80% WORKSPACE)
    ========================================================== */
 #app-container {
     display: grid;
-    grid-template-columns: 20% 80%; /* Sidebar 20% width | Content Grid 80% width */
+    grid-template-columns: 20% 80%; /* Fixed split control screen schema */
     width: 100vw;
     height: 100vh;
 }
 
-/* Left Navigation Control Pillar Frame */
+/* Left Sidebar Navigation Pillar Frame */
 #sidebar {
     background-color: var(--sidebar-bg);
     color: var(--text-light);
     display: flex;
-    flex-direction: column; /* Stack core children panels vertically */
+    flex-direction: column; /* Line items sequentially from top to bottom */
     padding: 1.5rem;
     height: 100vh;
     border-right: 1px solid #1e293b;
+    
+    /* Kept As Is: Set to visible so native dropdown selection trays float unclipped */
+    overflow: visible; 
 }
 
-/* Right Content Stage Workspace Window */
+/* Right Content Dynamic Stage Frame */
 #content-grid {
     display: flex;
     flex-direction: column;
@@ -57,10 +61,10 @@ body {
 }
 
 /* ==========================================================
-   3. LEFT SIDEBAR COMPONENT DESIGN SPECIFICATIONS
+   3. SIDEBAR SUB-COMPONENT DRESSING RULES (LEFT UNCHANGED)
    ========================================================== */
 
-/* 1. Branding Header Text Configurations */
+/* Branding Header Area Style */
 .brand-header {
     margin-bottom: 2rem;
     display: flex;
@@ -68,25 +72,28 @@ body {
     gap: 0.25rem;
 }
 .brand-header h2 {
-    font-size: 1.3rem;
+    font-size: 1.4rem;
     font-weight: 700;
-    letter-spacing: 0.5px;
+    letter-spacing: 1px;
+    color: var(--text-light);
 }
 .brand-header .portal-badge {
-    font-size: 0.72rem;
-    color: var(--accent-green);
+    font-size: 0.75rem;
     font-weight: 600;
+    color: var(--accent-green);
+    letter-spacing: 0.5px;
 }
 
-/* 2. Context Selector Dropdown Customization */
+/* Shared Dropdown Select Inputs Styling (Branch & Subject Look Identical) */
 .context-selector {
     display: flex;
     flex-direction: column;
-    gap: 0.4rem;
+    gap: 0.5rem;
     margin-bottom: 1.5rem;
 }
 .context-selector label {
-    font-size: 0.72rem;
+    font-size: 0.75rem;
+    font-weight: 500;
     color: var(--text-muted);
     text-transform: uppercase;
 }
@@ -96,192 +103,243 @@ body {
     border: 1px solid #334155;
     padding: 0.6rem;
     border-radius: 6px;
-    font-size: 0.88rem;
-    width: 100%;
+    font-family: inherit;
+    font-size: 0.9rem;
     outline: none;
     cursor: pointer;
+    width: 100%;
 }
 
-/* 3. High-Visibility Action Green Upload Material Element */
+/* Primary Action Button Style (+ UPLOAD) */
 .upload-btn {
     background-color: var(--accent-green);
-    color: #0f172a;
+    color: #0f172a; /* Dark text for optimal readability contrast */
     border: none;
-    padding: 0.75rem 1rem;
-    font-weight: 600;
-    font-size: 0.88rem;
-    border-radius: 6px;
-    cursor: pointer;
-    margin-bottom: 1.5rem;
-    width: 100%;
-    transition: background-color 0.2s ease;
-}
-.upload-btn:hover {
-    background-color: #059669;
-}
-
-/* 4. Subject Navigation List & Accordion Area */
-.subject-accordion {
-    flex-grow: 1;
-    overflow-y: auto;
-    margin-bottom: 1.5rem;
-}
-.subject-header {
-    padding: 0.65rem;
+    padding: 0.8rem 1rem;
     font-weight: 600;
     font-size: 0.9rem;
-    background-color: var(--primary-navy);
     border-radius: 6px;
     cursor: pointer;
+    margin-bottom: 2rem;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+    width: 100%;
 }
-.sub-links {
-    list-style: none;
-    padding-left: 0.5rem;
-    margin-top: 0.4rem;
-    display: flex;
-    flex-direction: column;
-    gap: 0.25rem;
-}
-.sub-links li a {
-    display: block;
-    padding: 0.45rem;
-    color: var(--text-muted);
-    text-decoration: none;
-    font-size: 0.85rem;
-    border-radius: 4px;
-}
-.sub-links li a:hover, .sub-links li a.active {
-    color: var(--text-light);
-    background-color: rgba(255, 255, 255, 0.05);
-}
+.upload-btn:hover { background-color: #059669; }
+.upload-btn:active { transform: scale(0.98); }
 
-/* 5. Profile Panel Anchored to Base Container */
+/* ==========================================================
+   4. INTERACTIVE HOVER PROFILE PANEL METRICS CONTAINER
+   ========================================================== */
 .user-profile-zone {
+    position: relative; /* Context anchor layer mapping point */
     background-color: var(--primary-navy);
     padding: 1rem;
     border-radius: 8px;
-    margin-top: auto; /* Force item container to the absolute bottom coordinate */
+    margin-top: auto; /* Pushes the profile component down securely */
     display: flex;
     flex-direction: column;
     gap: 0.75rem;
 }
-.profile-card {
+
+/* Hidden Review Metrics Popover box element */
+.admin-hidden-popover {
+    position: absolute;
+    bottom: 105%;
+    left: 0;
+    width: 100%;
+    background-color: #1e293b;
+    border: 1px solid #334155;
+    border-radius: 8px;
+    padding: 0.85rem;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+    
+    /* State: Completely hidden on initial paint configuration */
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(4px);
+    transition: all 0.18s ease-out;
+}
+.popover-title {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    font-weight: 700;
+    border-bottom: 1px solid #334155;
+    padding-bottom: 0.35rem;
+    margin-bottom: 0.45rem;
+}
+.tracker-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.8rem;
+    color: #cbd5e1;
+    padding: 0.25rem 0;
+}
+.count-badge {
+    font-size: 0.75rem;
+    font-weight: 700;
+    padding: 0.1rem 0.4rem;
+    border-radius: 10px;
+}
+.badge-approved { background-color: rgba(16, 185, 129, 0.15); color: var(--accent-green); }
+.badge-pending { background-color: rgba(245, 158, 11, 0.15); color: #f59e0b; }
+
+/* REVEAL METRICS DRAWER: Slide out smoothly when user hovers their mouse cursor */
+.user-profile-zone:hover .admin-hidden-popover {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.profile-card-trigger {
     display: flex;
     align-items: center;
-    gap: 0.65rem;
+    gap: 0.75rem;
+    cursor: pointer;
 }
-.profile-card .avatar {
-    width: 32px;
-    height: 32px;
+.profile-card-trigger .avatar {
+    width: 36px;
+    height: 36px;
     background-color: var(--accent-green);
     color: #0f172a;
+    font-weight: 700;
+    font-size: 0.9rem;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-weight: 700;
-    font-size: 0.85rem;
 }
-.user-name {
-    font-size: 0.88rem;
-    font-weight: 600;
-    display: block;
-}
-.user-role {
-    font-size: 0.72rem;
-    color: var(--text-muted);
-}
-.submissions-tracker {
-    font-size: 0.75rem;
-    color: var(--text-muted);
-    border-top: 1px solid #334155;
-    padding-top: 0.5rem;
-    display: flex;
-    justify-content: space-between;
-}
-.text-approved { color: var(--accent-green); }
-.text-pending { color: #f59e0b; }
+.user-info { display: flex; flex-direction: column; }
+.user-name { font-size: 0.9rem; font-weight: 600; color: var(--text-light); }
+.user-role { font-size: 0.75rem; color: var(--text-muted); }
 
+/* Bottom Actions Panel Button Grid Rows */
 .action-row {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 0.4rem;
+    gap: 0.5rem;
 }
 .footer-btn {
-    background: transparent;
-    border: 1px solid #334155;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background-color: transparent;
     color: var(--text-light);
     padding: 0.4rem;
+    font-size: 0.75rem;
+    font-weight: 600;
     border-radius: 4px;
     cursor: pointer;
-    font-size: 0.72rem;
-    font-weight: 600;
-    transition: all 0.2s ease;
+    transition: background-color 0.2s ease;
 }
-.footer-btn.logout:hover { background-color: rgba(255, 255, 255, 0.08); }
+.footer-btn.logout:hover { background-color: rgba(255, 255, 255, 0.1); }
 .footer-btn.exit:hover { background-color: var(--accent-red); border-color: var(--accent-red); }
 
 /* ==========================================================
-   4. RIGHT SIDE CONTENT GRID & RESOURCE CARDS WINDOW
+   5. RESTORED RIGHT CONTENT STAGE & CATEGORY HORIZONTAL TABS
    ========================================================== */
 .content-header {
     background-color: #ffffff;
-    padding: 1.5rem 2rem;
-    border-bottom: 1px solid #e2e8f0;
+    padding: 1rem 2rem;
+    border-bottom: 1px solid var(--card-border);
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem; /* Separates path breadcrumb trail from filter row tags */
 }
-.content-header h1 {
-    font-size: 1.25rem;
-    font-weight: 600;
-    color: #1e293b;
+.header-top-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.breadcrumb-trail {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--text-muted);
+}
+.breadcrumb-trail .active-sub {
+    color: #0f172a;
+    font-weight: 700;
 }
 
-/* Grid layout wrapper for academic download cards */
+/* Restored horizontal asset scopes navigation filter row */
+.category-tabs-bar {
+    display: flex;
+    gap: 0.65rem;
+    border-top: 1px solid #f1f5f9;
+    padding-top: 0.65rem;
+}
+.tab-btn {
+    background-color: #e2e8f0;
+    color: #475569;
+    border: 1px solid transparent;
+    padding: 0.4rem 0.9rem;
+    font-size: 0.85rem;
+    font-weight: 600;
+    border-radius: 6px;
+    font-family: inherit;
+    cursor: pointer;
+    transition: all 0.12s ease;
+    outline: none;
+}
+.tab-btn:hover {
+    background-color: #cbd5e1;
+    color: #1e293b;
+}
+.tab-btn.active-tab {
+    background-color: rgba(16, 185, 129, 0.1);
+    color: var(--accent-green);
+    border-color: rgba(16, 185, 129, 0.2);
+}
+
+/* Restored Grid Display Area Math Layout */
 .grid-display {
     padding: 2rem;
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); /* Adaptive card response */
     gap: 1.5rem;
     overflow-y: auto;
-    height: calc(100vh - 70px);
+    height: calc(100vh - 105px); /* Adjusted for layout top ribbon sizing balance */
 }
 
-/* Material Display Cards Styles */
+/* Modern Right Side Resource Cards Styling */
 .resource-card {
     background-color: #ffffff;
-    border: 1px solid #e2e8f0;
+    border: 1px solid var(--card-border);
     border-radius: 8px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     transition: transform 0.2s ease, box-shadow 0.2s ease;
     cursor: pointer;
+    height: 120px;
 }
 .resource-card:hover {
     transform: translateY(-2px);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
 }
-.card-body {
-    padding: 1.25rem;
+.card-upper {
+    padding: 1rem;
     display: flex;
+    gap: 0.65rem;
     align-items: flex-start;
-    gap: 0.75rem;
 }
-.file-icon {
-    font-size: 1.5rem;
+.file-tag {
+    font-size: 0.65rem;
     background-color: #f1f5f9;
-    padding: 0.4rem;
-    border-radius: 6px;
+    color: #475569;
+    padding: 0.2rem 0.4rem;
+    border-radius: 4px;
+    font-weight: 700;
 }
 .file-title {
-    font-size: 0.95rem;
+    font-size: 0.9rem;
     font-weight: 600;
     color: #334155;
     line-height: 1.4;
 }
-.card-footer {
+.card-lower {
     background-color: #f8fafc;
-    padding: 0.75rem 1.25rem;
-    border-top: 1px solid #e2e8f0;
+    padding: 0.65rem 1rem;
+    border-top: 1px solid var(--card-border);
     display: flex;
     justify-content: space-between;
     font-size: 0.75rem;

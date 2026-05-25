@@ -17,44 +17,54 @@
             
             <div class="brand-header">
                 <h2>CAMPUS VAULT</h2>
-                <span class="portal-badge">STUDENT PORTAL / MBU Portal</span>
+                <span class="portal-badge">STUDENT PORTAL</span>
             </div>
 
             <div class="context-selector">
-                <label for="branch-select">Active Branch Context</label>
+                <label for="branch-select">Branch Context</label>
                 <select id="branch-select">
-                    <option value="cse" selected>CSE Department</option>
-                    <option value="ece">ECE Department</option>
-                    <option value="me">ME Department</option>
+                    <option value="cse" selected>CSE Portal</option>
+                    <option value="ece">ECE Portal</option>
+                    <option value="me">ME Portal</option>
+                </select>
+            </div>
+
+            <div class="context-selector">
+                <label for="subject-select">Select Subject</label>
+                <select id="subject-select">
+                    <option value="java" selected>Java Programming</option>
+                    <option value="dbms">Database Management Systems</option>
+                    <option value="cn">Computer Networks</option>
+                    <option value="os">Operating Systems</option>
+                    <option value="dsa">Data Structures & Algorithms</option>
+                    <option value="co">Computer Organization</option>
                 </select>
             </div>
 
             <button class="upload-btn">+ UPLOAD MATERIAL</button>
 
-            <nav class="subject-accordion">
-                <div class="subject-item active">
-                    <div class="subject-header">Java Programming</div>
-                    <ul class="sub-links">
-                        <li><a href="#notes" class="active">📁 Notes</a></li>
-                        <li><a href="#labs">🧪 Lab Manuals</a></li>
-                        <li><a href="#pyp">📄 PYPs</a></li>
-                        <li><a href="#links">🔗 Links</a></li>
-                    </ul>
-                </div>
-            </nav>
-
             <div class="user-profile-zone">
-                <div class="profile-card">
+                
+                <div class="admin-hidden-popover">
+                    <div class="popover-title">Review Metrics</div>
+                    <div class="tracker-item">
+                        <span>Approved Uploads</span>
+                        <span class="count-badge badge-approved">3</span>
+                    </div>
+                    <div class="tracker-item">
+                        <span>Pending Review</span>
+                        <span class="count-badge badge-pending">1</span>
+                    </div>
+                </div>
+
+                <div class="profile-card-trigger">
                     <div class="avatar">SK</div>
                     <div class="user-info">
                         <span class="user-name">Sridhar</span>
-                        <span class="user-role">CSE Student</span>
+                        <span class="user-role">Student Contributor ▼</span>
                     </div>
                 </div>
-                <div class="submissions-tracker">
-                    <span>Approved: <strong class="text-approved">3</strong></span>
-                    <span>Pending: <strong class="text-pending">1</strong></span>
-                </div>
+
                 <div class="action-row">
                     <button class="footer-btn logout">LOGOUT</button>
                     <button class="footer-btn exit">EXIT</button>
@@ -66,30 +76,39 @@
         <main id="content-grid">
             
             <header class="content-header">
-                <h1>Viewing: Java Programming > Notes</h1>
+                <div class="header-top-row">
+                    <div class="breadcrumb-trail">Subjects &gt; <span class="active-sub">Java Programming</span></div>
+                </div>
+                
+                <div class="category-tabs-bar">
+                    <button class="tab-btn active-tab">📁 Notes</button>
+                    <button class="tab-btn">🔬 Lab Manuals</button>
+                    <button class="tab-btn">📜 PYPs</button>
+                    <button class="tab-btn">🌐 Links</button>
+                </div>
             </header>
             
             <section class="grid-display">
                 
                 <div class="resource-card">
-                    <div class="card-body">
-                        <div class="file-icon">📄</div>
-                        <h3 class="file-title">Unit 1: Object Oriented Concepts</h3>
+                    <div class="card-upper">
+                        <div class="file-tag">PDF</div>
+                        <h3 class="file-title">Unit 1: Object Oriented System Concepts</h3>
                     </div>
-                    <div class="card-footer">
-                        <span class="uploader">By: Sridhar</span>
-                        <span class="upload-date">2026-05-24</span>
+                    <div class="card-lower">
+                        <span>Uploader: Sridhar</span>
+                        <span>May 24, 2026</span>
                     </div>
                 </div>
 
                 <div class="resource-card">
-                    <div class="card-body">
-                        <div class="file-icon">📄</div>
-                        <h3 class="file-title">Mid-Term Previous Year Paper</h3>
+                    <div class="card-upper">
+                        <div class="file-tag">PDF</div>
+                        <h3 class="file-title">Mid-Term Mock Previous Year Paper</h3>
                     </div>
-                    <div class="card-footer">
-                        <span class="uploader">By: Admin</span>
-                        <span class="upload-date">2026-05-20</span>
+                    <div class="card-lower">
+                        <span>Uploader: Admin</span>
+                        <span>May 20, 2026</span>
                     </div>
                 </div>
 
